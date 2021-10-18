@@ -1,0 +1,245 @@
+EXERCÍCIO 1
+-----------
+
+#include <stdio.h>
+#include <math.h>
+#include <ctype.h>
+
+int main()
+
+
+{
+    int qdeFuncionarios, departamento, departamentoMenorSalario;
+    float salario, menorsalario=10000000, totalgeral=0,  mediageral;
+    float acumuladorDep1=0, acumuladorDep2=0, acumuladorDep3=0;
+    int i, n;
+    int contdep1, contdep2, contdep3;
+    float mediadep1, mediadep2, mediadep3;
+    
+    printf("\nInsira o número de funcionários: ");
+    scanf("%d",&n);
+    
+    for(i=0;i<n;i++){
+        printf("\nInsira o departamento | 1 - RH | 2 - CONTAS A RECEBER | 3 - JURÍDICO: ");
+        scanf("%d",&departamento);
+        
+        printf("\nInsira o salário: ");
+        scanf("%f",&salario);
+        totalgeral=totalgeral+salario; 
+        
+        if(salario<menorsalario){
+            menorsalario = salario;
+            departamentoMenorSalario = departamento;
+            
+        }else{}
+        
+        if(departamento == 1){
+            acumuladorDep1=acumuladorDep1+salario;
+            contdep1++;
+            
+        }else if(departamento == 2){
+            
+           acumuladorDep2=acumuladorDep2+salario;
+           contdep2++;
+            
+        }else if(departamento == 3){
+            
+            acumuladorDep3=acumuladorDep3+salario;
+            contdep3++;
+        }
+        
+    }
+    
+    mediadep1=acumuladorDep1/contdep1;
+    mediadep2=acumuladorDep2/contdep2;
+    mediadep3=acumuladorDep3/contdep3;
+    
+    printf("\nTOTAL DE SALÁRIOS POR DEPARTAMENTO E MEDIA: ");
+    printf("\n---------------------------------------------");
+    printf("\nDepartamento 1 - Recursos Humanos - Total: %.2f | Media: %.2f", acumuladorDep1, mediadep1);
+    printf("\nDepartamento 2 - Contas a Receber - Total: %.2f | Media: %.2f", acumuladorDep2, mediadep2);
+    printf("\nDepartamento 3 - Jurídico - Total: %.2f | Media: %.2f", acumuladorDep3, mediadep3);
+    
+    mediageral=totalgeral/n; 
+    printf("\n\nDADOS GERAIS:");
+    printf("\n----------------");
+    printf("\n\nA media geral dos salários é %.2f", mediageral);
+    printf("\nO menor salário é: %.2f e o departamento é o %d", menorsalario, departamentoMenorSalario);
+    printf("\nTotal geral de todos os salários: %.2f", totalgeral);
+
+    return 0;
+}
+
+EXERCÍCIO 2 
+-----------
+
+#include <stdio.h>
+#include <math.h>
+#include <ctype.h>
+
+int main()
+
+
+{
+    int i, n; 
+    float salario, acumuladorsalario, mediasalarios, menorsalario=1000000, maiorsalario=1;
+    int idade, acumulador1200=0, idademenorsalario;
+    char sexo, sexomenorsalario;
+    int menoridade=150, maioridade=1;
+    
+
+    printf("Insira a quantidade de pessoas a serem analisadas: ");
+    scanf("%d",&n);
+    
+    for(i=0;i<n;i++){
+        
+        printf("\n--------------------");
+        printf("\nInsira a idade: ");
+        scanf("%d",&idade);
+        
+        printf("\nInsira o sexo - | F para feminino | M para masculino | ");
+        scanf(" %c",&sexo);
+        fflush(stdin);
+        
+        //add validação se der tempo 
+        
+        printf("\nInsira o salário: ");
+        scanf("%f",&salario);
+        acumuladorsalario=acumuladorsalario+salario;
+        
+        if(salario < menorsalario){
+            menorsalario = salario;
+            idademenorsalario = idade;
+            sexomenorsalario = sexo;
+        }
+        else{}
+        
+        if(salario > maiorsalario){
+            maiorsalario = salario;
+            
+        }
+        else{}
+        
+        if(sexo == 'f' || sexo == 'F'){
+            
+            if(salario <= 1200){
+                acumulador1200++;
+            }
+            
+        }
+        else{}
+        
+        if(idade < menoridade){
+            menoridade=idade;
+        }
+        else{}
+        
+        if(idade > maioridade){
+            maioridade=idade;
+        }
+        else{}
+    }
+    
+    mediasalarios=acumuladorsalario/n;
+    
+    
+    printf("\nMédia de salarios do grupo: %.2f", mediasalarios);
+    printf("\nO maior salário é igual a: %.2f", maiorsalario);
+    printf("\nO menor salário é igual a: %.2f", menorsalario);
+    printf("\nA maior idade do grupo é: %d", maioridade);
+    printf("\nA menor idade do grupo é: %d", menoridade);
+    printf("\nQuantidade de mulheres com salario menor ou igual a 1200: %d", acumulador1200);
+    printf("\nA idade da pessoa que possui o menor salário é %d e o sexo é %c", idademenorsalario, sexomenorsalario);
+    
+
+}
+
+EXERCÍCIO 3
+-----------
+
+#include <stdio.h>
+#include <math.h>
+#include <ctype.h>
+
+int main()
+
+
+{
+    
+    int i,n;
+    int numero, inferioresa35=0;
+    float percentual50e100, entre50e100=0, acumuladorpositivos=0, positivos=0;
+    double mediapositivos;
+    
+    printf("\tBEM-VINDO! Quantos numeros gostaria de calcular? ");
+    scanf("%d",&n);
+    
+    for(i=0;i<n;i++){
+        printf("\nInsira um numero: ");
+        scanf("%d",&numero);
+        
+        if(numero > 0 ){
+            positivos++;
+            acumuladorpositivos = acumuladorpositivos + numero; 
+        }
+        else{}
+        
+        if(numero < 35){
+            inferioresa35++;
+        }
+        else{}
+        
+        if(numero > 50 && numero < 100){
+            entre50e100++;
+            
+        }
+    }
+    
+    mediapositivos=acumuladorpositivos/positivos;
+    percentual50e100=entre50e100/n * (100);
+    printf("\nQuantidade de números inferiores a 35: %d", inferioresa35);
+    printf("\nMedia dos números positivos: %.2lf", mediapositivos);
+    printf("\nPencentual de números entre 50 e 100 entre todos os números digitados: %.2f %%", percentual50e100);
+
+}
+
+EXERCÍCIO 4 
+------------
+
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+
+main()
+
+{
+
+  int cont=0, tam, i;
+  char nome[16];
+
+  printf("\tBem-vindo!");
+  printf("\n\nDigite um nome: ");
+  gets(nome);
+  tam = strlen(nome);
+
+  printf("\nImpressão das posições das letras dentro do vetor:\n");
+
+  for(i=0; i<tam; i++){
+
+    printf("[%d] = %c\n", i, nome[i]);        
+
+  }
+
+  printf("\nImpressao das letras em posicoes pares: \n"); 
+
+  while(cont<=tam-1){
+
+    printf("[%d] = %c\n", cont, nome[cont]);
+
+    cont=cont+2;
+
+  }
+
+}
+
